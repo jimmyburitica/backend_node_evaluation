@@ -1,7 +1,7 @@
 {
-  "name": "escuelajs-reto-09",
+  "name": "platzi-master-prueba",
   "version": "1.0.0",
-  "description": "Reto 9 Octubre 26: Curso de Backend con Node",
+  "description": "Por Jimmy Buritica",
   "main": "index.js",
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,7 +15,7 @@
     "supertest": "^6.1.3"
   },
   "scripts": {
-    "dev": "DEBUG=app:* nodemon src/index.js",
+    "dev": "set DEBUG=app:*&& nodemon src/index.js",
     "start": "NODE_ENV=production node src/index.js",
     "test:e2e": "jest --forceExit --config ./e2e/jest-e2e.json"
   },

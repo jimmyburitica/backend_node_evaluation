@@ -8,7 +8,7 @@ const USER = encodeURIComponent(config.dbUser);
 const PASSWORD = encodeURIComponent(config.dbPassword);
 const DB_NAME = config.dbName;
 
-const MONGO_URI = `${config.dbConnection}://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}?retryWrites=true&w=majority`;
+const MONGO_URI = `${config.dbConnection}://${USER}:${PASSWORD}@${config.dbHost}/${DB_NAME}?retryWrites=true&w=majority`;
 const collection = 'categories';
 
 describe("Tests to categories", () => {
@@ -18,7 +18,7 @@ describe("Tests to categories", () => {
 
   beforeAll(async () => {
     app = createApp();
-    const port = 3001;
+    const port = 3002;
     server = app.listen(port);
     const client = new MongoClient(MONGO_URI, {
       useNewUrlParser: true,
@@ -30,7 +30,8 @@ describe("Tests to categories", () => {
 
   afterAll(async () => {
     server.close();
-    database.dropDatabase();
+    database.collection(collection).drop();
+    // database.dropDatabase();
   });
 
   describe("POST /api/categories", () => {
